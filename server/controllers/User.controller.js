@@ -1,10 +1,5 @@
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var db = require("../database-mysql");
-const { log } = require("console");
 const { User, validate } = require("../database-mongo/models/User.model.js");
 const bcrypt = require("bcrypt");
-
-
 
 const selectAll = async function (req, res) {
   try {
@@ -16,7 +11,7 @@ const selectAll = async function (req, res) {
 }; //Tested
 
 const createUser = async (req, res) => {
-  console.log(req.body,"hellllll")
+  console.log(req.body, "hellllll");
   try {
     const { error } = validate(req.body);
     if (error)
@@ -34,11 +29,9 @@ const createUser = async (req, res) => {
     await new User({ ...req.body, password: hashPassword }).save();
     res.status(201).send({ message: "User created successfully" });
   } catch (error) {
-    console.log(error,"error")
-     res.status(500).send({ message: "Internal Server Error" });
+    console.log(error, "error");
+    res.status(500).send({ message: "Internal Server Error" });
   }
 }; //Tested
-
-
 
 module.exports = { selectAll, createUser };

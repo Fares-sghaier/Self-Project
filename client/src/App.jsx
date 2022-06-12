@@ -1,35 +1,20 @@
+import Home from "./components/Views/Home/Home.jsx";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Signup from "./components/Views/Auth/Signup/Signup.jsx";
+import Login from "./components/Views/Auth/Login/Login.jsx";
 import React from "react";
-import ReactDOM from "react-dom";
-import $ from "jquery";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
+function App() {
+  const user = localStorage.getItem("token");
 
-  componentDidMount() {
-    $.ajax({
-      url: "/items",
-      success: (data) => {
-        this.setState({
-          items: data,
-        });
-      },
-      error: (err) => {
-        console.log("err", err);
-      },
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Hello</h1>
-      </div>
-    );
-  }
+  return (
+    <Routes>
+      {user && <Route path="/" exact element={<Home />} />}
+      <Route path="/signup" exact element={<Signup />} />
+      <Route path="/login" exact element={<Login />} />
+      <Route path="/" element={<Navigate replace to="/login" />} />
+    </Routes>
+  );
 }
+
 export default App;
