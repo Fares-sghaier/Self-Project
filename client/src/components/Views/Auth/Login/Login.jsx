@@ -29,7 +29,12 @@ const Login = () => {
     }
   };
   return (
+    <div>
+        <h2 className="etafakna-title">E-Tafakna</h2>
+        <p className="etafakna-paragraphe">Choose the type of Contract that you want ,<br/> Sign and share it . </p>
     <div className="login_containerr">
+       
+       
       <div className="login_form_containerr">
         <div className="leftt">
           <form className="form_containerr" onSubmit={handleSubmit}>
@@ -67,6 +72,7 @@ const Login = () => {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };
