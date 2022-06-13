@@ -4,7 +4,11 @@ module.exports = {
   entry: path.join(__dirname, "client", "src", "index.jsx"),
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "client", "public")
+    path: path.join(__dirname, "client", "public"),
+    publicPath:'/',
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -15,5 +19,6 @@ module.exports = {
       }
     ]
   },
+  
   watch: true
 };
